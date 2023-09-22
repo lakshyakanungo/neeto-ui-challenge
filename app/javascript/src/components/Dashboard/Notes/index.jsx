@@ -9,8 +9,8 @@ import notesApi from "apis/notes";
 import EmptyState from "components/commons/EmptyState";
 
 import DeleteAlert from "./DeleteAlert";
+import List from "./List";
 import NewNotePane from "./Pane/Create";
-import Table from "./Table";
 
 const Notes = () => {
   const [loading, setLoading] = useState(true);
@@ -72,12 +72,14 @@ const Notes = () => {
               />
             }
           />
-          <Table
+          {/* <Table
             fetchNotes={fetchNotes}
             notes={notes}
             selectedNoteIds={selectedNoteIds}
             setSelectedNoteIds={setSelectedNoteIds}
-          />
+          /> */}
+          {/* <div className="mx-auto flex"></div> */}
+          <List notes={notes} />
         </>
       ) : (
         <EmptyState
