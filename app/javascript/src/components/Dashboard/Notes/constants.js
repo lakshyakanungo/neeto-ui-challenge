@@ -17,10 +17,11 @@ export const ASSIGNED_CONTACT_DATA = buildSelectOptions([
 ]);
 
 export const TAGS_DATA = buildSelectOptions([
-  "Donald Trump",
-  "Joe Biden",
-  "Alicia Keys",
-  "John Mayor",
+  "Admin",
+  "Developer",
+  "Tester",
+  "HR",
+  "Sales",
 ]);
 
 export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
