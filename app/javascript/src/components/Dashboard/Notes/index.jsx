@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { Delete } from "neetoicons";
 import { Button, PageLoader } from "neetoui";
-import { Container, Header, SubHeader } from "neetoui/layouts";
+import { Container, Header } from "neetoui/layouts";
 
 import notesApi from "apis/notes";
 import EmptyState from "components/commons/EmptyState";
 
 import DeleteAlert from "./DeleteAlert";
+import List from "./List";
 import NewNotePane from "./Pane/Create";
-import Table from "./Table";
 
 const Notes = () => {
   const [loading, setLoading] = useState(true);
@@ -61,7 +60,7 @@ const Notes = () => {
       />
       {notes.length ? (
         <>
-          <SubHeader
+          {/* <SubHeader
             rightActionBlock={
               <Button
                 disabled={!selectedNoteIds.length}
@@ -71,12 +70,18 @@ const Notes = () => {
                 onClick={() => setShowDeleteAlert(true)}
               />
             }
-          />
-          <Table
+          /> */}
+          {/* <Table
             fetchNotes={fetchNotes}
             notes={notes}
             selectedNoteIds={selectedNoteIds}
             setSelectedNoteIds={setSelectedNoteIds}
+          /> */}
+          {/* <div className="mx-auto flex"></div> */}
+          <List
+            notes={notes}
+            setSelectedNoteIds={setSelectedNoteIds}
+            setShowDeleteAlert={setShowDeleteAlert}
           />
         </>
       ) : (

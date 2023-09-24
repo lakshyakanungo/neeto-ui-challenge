@@ -2,11 +2,15 @@ import React from "react";
 
 import { Formik, Form as FormikForm } from "formik";
 import { Button, Pane } from "neetoui";
-import { Input, Textarea } from "neetoui/formik";
+import { Input, Textarea, Select as FormikSelect } from "neetoui/formik";
 
 import notesApi from "apis/notes";
 
-import { NOTES_FORM_VALIDATION_SCHEMA } from "../constants";
+import {
+  NOTES_FORM_VALIDATION_SCHEMA,
+  ASSIGNED_CONTACT_DATA,
+  TAGS_DATA,
+} from "../constants";
 
 const Form = ({ onClose, refetch, note, isEdit }) => {
   const handleSubmit = async values => {
@@ -37,13 +41,33 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
               className="w-full flex-grow-0"
               label="Title"
               name="title"
+              placeholder="Enter note title"
             />
             <Textarea
               required
               className="w-full flex-grow-0"
               label="Description"
               name="description"
+              placeholder="Enter note description"
               rows={8}
+            />
+            <FormikSelect
+              required
+              className="w-full flex-grow-0"
+              label="Assigned Contact"
+              name="assigned_contact"
+              options={ASSIGNED_CONTACT_DATA}
+              placeholder="Select Role"
+              strategy="fixed"
+            />
+            <FormikSelect
+              required
+              className="w-full flex-grow-0"
+              label="Tags"
+              name="tags"
+              options={TAGS_DATA}
+              placeholder="Select Role"
+              strategy="fixed"
             />
           </Pane.Body>
           <Pane.Footer>
