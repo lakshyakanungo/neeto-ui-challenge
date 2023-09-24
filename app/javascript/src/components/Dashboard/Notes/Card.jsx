@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 
 import { Clock, MenuVertical } from "neetoicons";
-import { Tag, Avatar } from "neetoui";
+import { Tag, Avatar, Dropdown } from "neetoui";
 
-const Card = ({ note }) => {
+const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const creationTimeInPastHours =
     new Date().getHours() - new Date(note.created_at).getHours();
+
+  const handleDelete = () => {
+    setSelectedNoteIds(note.id);
+    setShowDeleteAlert(true);
+  };
 
   return (
     <div
@@ -44,15 +49,21 @@ const Card = ({ note }) => {
               imageUrl: "https://i.pravatar.cc/300",
               name: "Aishwarya",
             }}
-            onClick={function noRefCheck() {}}
           />
         </div>
       </div>
       <button
-        className="absolute top-2 right-2 h-8	w-8 opacity-40"
+        className="absolute top-2 right-2	h-8 w-8"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
-        <MenuVertical />
+        <Dropdown icon={() => <MenuVertical size={16} />}>
+          <Dropdown.Menu>
+            <Dropdown.MenuItem.Button>Edit</Dropdown.MenuItem.Button>
+            <Dropdown.MenuItem.Button onClick={handleDelete}>
+              Delete
+            </Dropdown.MenuItem.Button>
+          </Dropdown.Menu>
+        </Dropdown>
       </button>
     </div>
   );

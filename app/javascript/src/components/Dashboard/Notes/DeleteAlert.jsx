@@ -30,9 +30,7 @@ const DeleteAlert = ({
       isOpen
       isSubmitting={deleting}
       message="Are you sure you want to continue? This cannot be undone."
-      title={`Delete ${selectedNoteIds.length} ${
-        selectedNoteIds.length > 1 ? "notes" : "note"
-      }?`}
+      title="Delete note?"
       onClose={onClose}
       onSubmit={handleDelete}
     />

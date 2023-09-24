@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { Delete } from "neetoicons";
 import { Button, PageLoader } from "neetoui";
-import { Container, Header, SubHeader } from "neetoui/layouts";
+import { Container, Header } from "neetoui/layouts";
 
 import notesApi from "apis/notes";
 import EmptyState from "components/commons/EmptyState";
@@ -61,7 +60,7 @@ const Notes = () => {
       />
       {notes.length ? (
         <>
-          <SubHeader
+          {/* <SubHeader
             rightActionBlock={
               <Button
                 disabled={!selectedNoteIds.length}
@@ -71,7 +70,7 @@ const Notes = () => {
                 onClick={() => setShowDeleteAlert(true)}
               />
             }
-          />
+          /> */}
           {/* <Table
             fetchNotes={fetchNotes}
             notes={notes}
@@ -79,7 +78,11 @@ const Notes = () => {
             setSelectedNoteIds={setSelectedNoteIds}
           /> */}
           {/* <div className="mx-auto flex"></div> */}
-          <List notes={notes} />
+          <List
+            notes={notes}
+            setSelectedNoteIds={setSelectedNoteIds}
+            setShowDeleteAlert={setShowDeleteAlert}
+          />
         </>
       ) : (
         <EmptyState
