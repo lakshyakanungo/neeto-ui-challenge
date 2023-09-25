@@ -11,6 +11,8 @@ import DeleteAlert from "./DeleteAlert";
 import List from "./List";
 import NewNotePane from "./Pane/Create";
 
+const noop = () => {};
+
 const Notes = () => {
   const [loading, setLoading] = useState(true);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
@@ -44,11 +46,12 @@ const Notes = () => {
   return (
     <Container>
       <Header
+        menuBarToggle={noop}
         title="Notes"
         actionBlock={
           <Button
             icon="ri-add-line"
-            label="Add new note"
+            label="Add note"
             size="small"
             onClick={() => setShowNewNotePane(true)}
           />
@@ -56,6 +59,7 @@ const Notes = () => {
         searchProps={{
           value: searchTerm,
           onChange: e => setSearchTerm(e.target.value),
+          placeholder: "Search Name, Email, Phone Number, Ect.",
         }}
       />
       {notes.length ? (
