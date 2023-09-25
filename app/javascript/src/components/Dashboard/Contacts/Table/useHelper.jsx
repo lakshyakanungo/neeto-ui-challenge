@@ -3,6 +3,8 @@ import React from "react";
 import { MenuHorizontal } from "@bigbinary/neeto-icons";
 import { Avatar, Dropdown } from "neetoui";
 
+import { getMonthAndDate } from "components/Dashboard/utils";
+
 const renderNameColumnData = (name, role) => (
   <div className="flex flex-row items-center">
     <Avatar className="mr-2" size="medium" user={{ name: `${name}` }} />
@@ -51,7 +53,7 @@ export const useHelper = setShowDeleteAlert => {
       dataIndex: "created_at",
       key: "created_at",
       width: "30%",
-      render: created_at => renderOtherColumnData(created_at),
+      render: created_at => renderOtherColumnData(getMonthAndDate(created_at)),
     },
     {
       title: "",

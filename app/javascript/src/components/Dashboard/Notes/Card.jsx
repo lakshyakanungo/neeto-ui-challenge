@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
 import { Clock, MenuVertical } from "neetoicons";
-import { Tag, Avatar, Dropdown } from "neetoui";
+import { Tag, Avatar, Dropdown, Tooltip } from "neetoui";
+
+import { getRelativeTime, getDayAndTime } from "../utils";
 
 const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const creationTimeInPastHours =
-    new Date().getHours() - new Date(note.created_at).getHours();
+  // new Date(note.created_at)
 
   const handleDelete = () => {
     setSelectedNoteIds(note.id);
@@ -41,7 +41,9 @@ const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
         </div>
         <div className="flex items-center gap-2">
           <Clock color="#68737D" size={16} />
-          Created {creationTimeInPastHours} hrs ago
+          <Tooltip content={getDayAndTime(note.created_at)} position="bottom">
+            Created {getRelativeTime(note.created_at)}
+          </Tooltip>
           <Avatar
             showTooltip
             size="small"
