@@ -56,7 +56,7 @@ const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
         className="absolute top-2 right-2	h-8 w-8"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
-        <Dropdown icon={() => <MenuVertical size={16} />}>
+        <Dropdown buttonStyle="text" icon={() => <MenuVertical size={20} />}>
           <Dropdown.Menu>
             <Dropdown.MenuItem.Button>Edit</Dropdown.MenuItem.Button>
             <Dropdown.MenuItem.Button onClick={handleDelete}>

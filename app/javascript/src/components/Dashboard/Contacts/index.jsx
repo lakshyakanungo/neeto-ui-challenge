@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import { Delete } from "neetoicons";
 import { Button, PageLoader } from "neetoui";
-import { Container, Header, SubHeader } from "neetoui/layouts";
+import { Container, Header } from "neetoui/layouts";
 
 import EmptyState from "components/commons/EmptyState";
 
-import { CONTACTS_TABLE_INITIAL_ROW_DATA } from "./constants";
+import { CONTACT_DETAILS_DATA } from "./constants";
 import DeleteAlert from "./DeleteAlert";
 import NewContactPane from "./Pane/Create";
 import Table from "./Table";
@@ -19,7 +18,7 @@ const Contacts = () => {
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedContactIds, setSelectedContactIds] = useState([]);
-  const [contacts, setContacts] = useState(CONTACTS_TABLE_INITIAL_ROW_DATA);
+  const [contacts, setContacts] = useState(CONTACT_DETAILS_DATA);
 
   useEffect(() => {
     fetchContacts();
@@ -27,11 +26,11 @@ const Contacts = () => {
 
   const fetchContacts = async () => {
     try {
-      // setLoading(true);
+      setLoading(true);
       // const {
       //   data: { notes },
-      // } = await notesApi.fetch();
-      // setNotes(notes);
+      // } = await contactApi.fetch();
+      // setContacts(contact);
       setContacts;
     } catch (error) {
       logger.error(error);
@@ -64,25 +63,13 @@ const Contacts = () => {
         }}
       />
       {contacts.length ? (
-        <>
-          <SubHeader
-            rightActionBlock={
-              <Button
-                disabled={!selectedContactIds.length}
-                icon={Delete}
-                label="Delete"
-                size="small"
-                onClick={() => setShowDeleteAlert(true)}
-              />
-            }
-          />
-          <Table
-            contacts={contacts}
-            fetchContacts={fetchContacts}
-            selectedContactIds={selectedContactIds}
-            setSelectedContactIds={setSelectedContactIds}
-          />
-        </>
+        <Table
+          contacts={contacts}
+          fetchContacts={fetchContacts}
+          selectedContactIds={selectedContactIds}
+          setSelectedContactIds={setSelectedContactIds}
+          setShowDeleteAlert={setShowDeleteAlert}
+        />
       ) : (
         <EmptyState
           // image={EmptyContactsListImage}
@@ -100,7 +87,6 @@ const Contacts = () => {
       {showDeleteAlert && (
         <DeleteAlert
           refetch={fetchContacts}
-          selectedContactIds={selectedContactIds}
           setSelectedContactIds={setSelectedContactIds}
           onClose={() => setShowDeleteAlert(false)}
         />

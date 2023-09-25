@@ -2,27 +2,15 @@ import React from "react";
 
 import { Formik, Form as FormikForm } from "formik";
 import { Button, Pane } from "neetoui";
-import { Input, Textarea } from "neetoui/formik";
+import { Input, Select as FormikSelect } from "neetoui/formik";
 
-// import contactsApi from "apis/contacts";
-
-import { CONTACTS_FORM_VALIDATION_SCHEMA } from "../constants";
+import {
+  CONTACTS_FORM_VALIDATION_SCHEMA,
+  CONTACTS_FORM_ROLE_DATA,
+} from "../constants";
 
 const Form = ({ onClose, contact, isEdit }) => {
-  const handleSubmit = async values => {
-    try {
-      // if (isEdit) {
-      //   await contactsApi.update(contact.id, values);
-      // } else {
-      //   await contactsApi.create(values);
-      // }
-      // refetch();
-      // onClose();
-      values;
-    } catch (err) {
-      logger.error(err);
-    }
-  };
+  const handleSubmit = () => {};
 
   return (
     <Formik
@@ -33,18 +21,35 @@ const Form = ({ onClose, contact, isEdit }) => {
       {({ isSubmitting }) => (
         <FormikForm className="w-full">
           <Pane.Body className="space-y-6">
+            <div className="flex w-full gap-4">
+              <Input
+                required
+                label="First Name"
+                name="firstName"
+                placeholder="Enter first name"
+              />
+              <Input
+                required
+                label="Last Name"
+                name="lastName"
+                placeholder="Enter last name"
+              />
+            </div>
             <Input
               required
               className="w-full flex-grow-0"
-              label="Title"
-              name="title"
+              label="Email Address"
+              name="email"
+              placeholder="Enter your email address"
             />
-            <Textarea
+            <FormikSelect
               required
               className="w-full flex-grow-0"
-              label="Description"
-              name="description"
-              rows={8}
+              label="Role"
+              name="role"
+              options={CONTACTS_FORM_ROLE_DATA}
+              placeholder="Select Role"
+              strategy="fixed"
             />
           </Pane.Body>
           <Pane.Footer>

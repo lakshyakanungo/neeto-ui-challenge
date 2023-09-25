@@ -4,7 +4,7 @@ import { Pane, Typography } from "neetoui";
 
 import Form from "./Form";
 
-import { CONTACTS_FORM_INITIAL_FORM_VALUES } from "../constants";
+import { CONTACTS_FORM_INITIAL_VALUES } from "../constants";
 
 const Create = ({ fetchNotes, showPane, setShowPane }) => {
   const onClose = () => setShowPane(false);
@@ -17,7 +17,7 @@ const Create = ({ fetchNotes, showPane, setShowPane }) => {
         </Typography>
       </Pane.Header>
       <Form
-        contact={CONTACTS_FORM_INITIAL_FORM_VALUES}
+        contact={CONTACTS_FORM_INITIAL_VALUES}
         isEdit={false}
         refetch={fetchNotes}
         onClose={onClose}
