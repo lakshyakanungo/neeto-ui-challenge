@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Formik, Form as FormikForm } from "formik";
-import { Button, Pane } from "neetoui";
+import { Button, Pane, Toastr } from "neetoui";
 import { Input, Select as FormikSelect } from "neetoui/formik";
 
 import {
@@ -10,7 +10,10 @@ import {
 } from "../constants";
 
 const Form = ({ onClose, contact, isEdit }) => {
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    Toastr.success("Contact added successfully");
+    onClose();
+  };
 
   return (
     <Formik
