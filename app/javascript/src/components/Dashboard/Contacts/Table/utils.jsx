@@ -7,10 +7,7 @@ import { Avatar, Dropdown } from "neetoui";
 import { getMonthAndDate } from "components/Dashboard/utils";
 
 const renderColumnHeader = text => (
-  <div
-    className="text-xs font-bold uppercase tracking-wide"
-    style={{ color: "#D8DCDE" }}
-  >
+  <div className="neeto-ui-text-gray-300 text-xs font-bold uppercase tracking-wide">
     {text}
   </div>
 );
@@ -20,15 +17,13 @@ const renderNameColumnData = (name, role) => (
     <Avatar className="mr-2" size="medium" user={{ name: `${name}` }} />
     <div className="-my-2 flex flex-col">
       <h5 className="text-sm">{name}</h5>
-      <div className="text-xs" style={{ color: "#68737D" }}>
-        {role}
-      </div>
+      <div className="neeto-ui-text-gray-600 text-xs">{role}</div>
     </div>
   </div>
 );
 
 const renderOtherColumnData = data => (
-  <div className="text-sm leading-4	tracking-tight" style={{ color: "#68737D" }}>
+  <div className="neeto-ui-text-gray-600 text-sm	leading-4 tracking-tight">
     {data}
   </div>
 );
@@ -59,10 +54,9 @@ export const getColumnData = setShowDeleteAlert => [
     title: "",
     dataIndex: "iconButton",
     key: "iconButton",
-    fixed: "right",
     width: "5%",
     render: () => (
-      <div className="flex justify-end">
+      <div className="flex justify-center">
         <Dropdown
           appendTo={() => document.body}
           buttonStyle="text"

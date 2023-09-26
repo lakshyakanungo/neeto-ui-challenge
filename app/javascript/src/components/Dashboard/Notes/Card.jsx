@@ -20,24 +20,18 @@ const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
 
   return (
     <div
-      className="relative mx-auto flex w-full flex-col items-start gap-3
-    self-stretch rounded-sm border border-[#D8DCDE] bg-white p-4
-    shadow-[0_1px_4px_-1px_rgba(28,48,74,0.12)]"
+      className="neeto-ui-border-gray-300 neeto-ui-shadow-xs relative mx-auto flex w-full flex-col
+    items-start gap-3 self-stretch rounded-sm border bg-white
+    p-4"
     >
-      <div className="flex flex-col items-start gap-0.5 self-stretch font-['SF_Pro_Text']">
-        <h4
-          className="text-base font-semibold text-[#2F3941]"
-          style={{ color: "#2F3941" }}
-        >
+      <div className="flex flex-col items-start gap-0.5 self-stretch">
+        <h4 className="neeto-ui-text-gray-700 text-base font-semibold">
           {title}
         </h4>
-        <div
-          className="text-sm font-normal text-[#68737D]"
-          style={{ color: "#68737D" }}
-        >
+        <div className="neeto-ui-text-gray-600 text-sm font-normal">
           {description}
         </div>
-        <hr className="mt-3 h-px w-full" style={{ background: "#D8DCDE" }} />
+        <hr className="neeto-ui-bg-gray-300 mt-3 h-px w-full" />
       </div>
       <div className="flex justify-between gap-3 self-stretch">
         <div className="flex items-center">

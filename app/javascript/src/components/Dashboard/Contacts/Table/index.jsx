@@ -16,6 +16,7 @@ const Table = ({
       bordered={false}
       columnData={getColumnData(setShowDeleteAlert)}
       defaultPageSize={9}
+      rowClassName={(_, index) => (index % 2 ? "bg-gray-100" : "")}
       rowData={contacts}
       selectedRowKeys={selectedContactIds}
       onRowSelect={selectedRowKeys => setSelectedContactIds(selectedRowKeys)}
