@@ -2,12 +2,15 @@ import React from "react";
 
 import { Clock, MenuVertical } from "neetoicons";
 import { Tag, Avatar, Dropdown, Tooltip } from "neetoui";
+import { useTranslation } from "react-i18next";
 
 import { CARD_IMAGE_URL, CARD_USER_NAME } from "./constants";
 
 import { getRelativeTime, getDayAndTime } from "../utils";
 
 const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
+  const { t } = useTranslation();
+
   const { id, title, description, created_at } = note;
 
   const handleDelete = () => {
@@ -38,12 +41,14 @@ const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
       </div>
       <div className="flex justify-between gap-3 self-stretch">
         <div className="flex items-center">
-          <Tag label="Getting Started" />
+          <Tag label={t("note.card.tag.label")} />
         </div>
         <div className="flex items-center gap-2">
           <Clock color="#68737D" size={16} />
           <Tooltip content={getDayAndTime(created_at)} position="bottom">
-            Created {getRelativeTime(created_at)}
+            {t("note.card.relative_time", {
+              time: getRelativeTime(created_at),
+            })}
           </Tooltip>
           <Avatar
             showTooltip
@@ -58,9 +63,11 @@ const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
       <div className="absolute top-2 right-2	h-8 w-8">
         <Dropdown buttonStyle="text" icon={() => <MenuVertical size={20} />}>
           <Dropdown.Menu>
-            <Dropdown.MenuItem.Button>Edit</Dropdown.MenuItem.Button>
+            <Dropdown.MenuItem.Button>
+              {t("note.card.dropdown.btn.edit")}
+            </Dropdown.MenuItem.Button>
             <Dropdown.MenuItem.Button onClick={handleDelete}>
-              Delete
+              {t("note.card.dropdown.btn.delete")}
             </Dropdown.MenuItem.Button>
           </Dropdown.Menu>
         </Dropdown>

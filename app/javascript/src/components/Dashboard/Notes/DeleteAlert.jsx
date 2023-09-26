@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Alert } from "neetoui";
+import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
 
@@ -11,6 +12,8 @@ const DeleteAlert = ({
   setSelectedNoteIds,
 }) => {
   const [deleting, setDeleting] = useState(false);
+
+  const { t } = useTranslation();
 
   const handleDelete = async () => {
     try {
@@ -30,8 +33,8 @@ const DeleteAlert = ({
     <Alert
       isOpen
       isSubmitting={deleting}
-      message="Are you sure you want to continue? This cannot be undone."
-      title="Delete note?"
+      message={t("note.delete_alert.message")}
+      title={t("note.delete_alert.title")}
       onClose={onClose}
       onSubmit={handleDelete}
     />

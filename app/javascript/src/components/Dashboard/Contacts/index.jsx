@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { Button, PageLoader } from "neetoui";
 import { Container, Header } from "neetoui/layouts";
+import { useTranslation } from "react-i18next";
 
 import EmptyState from "components/commons/EmptyState";
 
@@ -19,6 +20,8 @@ const Contacts = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedContactIds, setSelectedContactIds] = useState([]);
   const [contacts, setContacts] = useState(CONTACT_DETAILS_DATA);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchContacts();
@@ -47,11 +50,11 @@ const Contacts = () => {
     <Container>
       <Header
         menuBarToggle={noop}
-        title="Contacts"
+        title={t("contact.header.title")}
         actionBlock={
           <Button
             icon="ri-add-line"
-            label="Add contact"
+            label={t("contact.header.btn_label")}
             size="small"
             onClick={() => setShowNewContactPane(true)}
           />
@@ -59,7 +62,7 @@ const Contacts = () => {
         searchProps={{
           value: searchTerm,
           onChange: e => setSearchTerm(e.target.value),
-          placeholder: "Search Name, Email, Phone Number, Ect.",
+          placeholder: t("contact.header.search_placeholder"),
         }}
       />
       {contacts.length > 0 ? (
@@ -73,9 +76,9 @@ const Contacts = () => {
       ) : (
         <EmptyState
           primaryAction={() => setShowNewContactPane(true)}
-          primaryActionLabel="Add new Contact"
-          subtitle="Add your Contacts to send customized emails to them."
-          title="Looks like you don't have any Contacts!"
+          primaryActionLabel={t("contact.emptyPage.action_label")}
+          subtitle={t("contact.emptyPage.subtitle")}
+          title={t("contact.emptyPage.title")}
         />
       )}
       <NewContactPane

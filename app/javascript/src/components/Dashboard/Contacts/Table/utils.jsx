@@ -1,5 +1,6 @@
 import React from "react";
 
+import i18next from "i18next";
 import { MenuHorizontal } from "neetoicons";
 import { Avatar, Dropdown } from "neetoui";
 
@@ -69,13 +70,15 @@ export const getColumnData = setShowDeleteAlert => [
           strategy="fixed"
         >
           <Dropdown.Menu>
-            <Dropdown.MenuItem.Button>Edit</Dropdown.MenuItem.Button>
+            <Dropdown.MenuItem.Button>
+              {i18next.t("contact.table.dropdown.edit")}
+            </Dropdown.MenuItem.Button>
             <Dropdown.MenuItem.Button
               onClick={() => {
                 setShowDeleteAlert(true);
               }}
             >
-              Delete
+              {i18next.t("contact.table.dropdown.delete")}
             </Dropdown.MenuItem.Button>
           </Dropdown.Menu>
         </Dropdown>

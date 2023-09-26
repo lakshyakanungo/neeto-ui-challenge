@@ -1,1 +1,125 @@
-{}
+{
+  "note": {
+    "header": {
+      "title": "Notes",
+      "btn_label": "Add note",
+      "search_placeholder": "Search Name, Email, Phone Number, Ect."
+    },
+    "emptyPage": {
+      "action_label": "Add new note",
+      "subtitle": "Add your notes to send customized emails to them.",
+      "title": "Looks like you don't have any notes!"
+    },
+    "delete_alert": {
+      "message": "Are you sure you want to continue? This cannot be undone.",
+      "title": "Delete note?"
+    },
+    "pane": {
+      "header": "Add New Note"
+    },
+    "form": {
+      "title": {
+        "label": "Title",
+        "placeholder": "Enter note title"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Enter note description"
+      },
+      "assignedContact": {
+        "label": "Assigned Contact",
+        "placeholder": "Select Role"
+      },
+      "tags": {
+        "label": "Tags",
+        "placeholder": "Select Role"
+      },
+      "button": {
+        "label": {
+          "update": "Update",
+          "save": "Save changes",
+          "cancel": "Cancel"
+        }
+      },
+      "validations": {
+        "title": "Title is required",
+        "description": "Description is required",
+        "assignedContact": "Assigned Contact is required",
+        "tags": "Tags is required"
+      }
+    },
+    "card": {
+      "tag": {
+        "label": "Getting Started"
+      },
+      "relative_time": "Created {{time}}",
+      "dropdown": {
+        "btn": {
+          "edit": "Edit",
+          "delete": "Delete"
+        }
+      }
+    }
+  },
+  "contact": {
+    "header": {
+      "title": "Contacts",
+      "btn_label": "Add contact",
+      "search_placeholder": "Search Name, Email, Phone Number, Ect."
+    },
+    "emptyPage": {
+      "action_label": "Add new Contact",
+      "subtitle": "Add your Contacts to send customized emails to them.",
+      "title": "Looks like you don't have any Contacts!"
+    },
+    "delete_alert": {
+      "message": "Are you sure you want to continue? This cannot be undone.",
+      "title": "Delete Contact?",
+      "toaster_success": "Contact deleted successfully"
+    },
+    "pane": {
+      "header": "Add New Contact"
+    },
+    "form": {
+      "firstName": {
+        "label": "First Name",
+        "placeholder": "Enter first name"
+      },
+      "lastName": {
+        "label": "Last Name",
+        "placeholder": "Enter last name"
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Enter your email address"
+      },
+      "role": {
+        "label": "Role",
+        "placeholder": "Select Role"
+      },
+      "button": {
+        "label": {
+          "update": "Update",
+          "save": "Save changes",
+          "cancel": "Cancel"
+        }
+      },
+      "toaster_success": "Contact added successfully",
+      "validations": {
+        "firstName": "First name is required",
+        "lastName": "Last name is required",
+        "email": {
+          "required": "Email is required",
+          "valid": "Please enter valid email address"
+        },
+        "role": "Role is required"
+      }
+    },
+    "table": {
+      "dropdown": {
+        "edit": "Edit",
+        "delete": "delete"
+      }
+    }
+  }
+}

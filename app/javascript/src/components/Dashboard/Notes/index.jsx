@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import EmptyNotesListImage from "images/EmptyNotesList";
 import { Button, PageLoader } from "neetoui";
 import { Container, Header } from "neetoui/layouts";
+import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
 import EmptyState from "components/commons/EmptyState";
@@ -20,6 +21,8 @@ const Notes = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNoteIds, setSelectedNoteIds] = useState([]);
   const [notes, setNotes] = useState([]);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchNotes();
@@ -47,11 +50,11 @@ const Notes = () => {
     <Container>
       <Header
         menuBarToggle={noop}
-        title="Notes"
+        title={t("note.header.title")}
         actionBlock={
           <Button
             icon="ri-add-line"
-            label="Add note"
+            label={t("note.header.btn_label")}
             size="small"
             onClick={() => setShowNewNotePane(true)}
           />
@@ -59,7 +62,7 @@ const Notes = () => {
         searchProps={{
           value: searchTerm,
           onChange: e => setSearchTerm(e.target.value),
-          placeholder: "Search Name, Email, Phone Number, Ect.",
+          placeholder: t("note.header.search_placeholder"),
         }}
       />
       {notes.length > 0 ? (
@@ -72,9 +75,9 @@ const Notes = () => {
         <EmptyState
           image={EmptyNotesListImage}
           primaryAction={() => setShowNewNotePane(true)}
-          primaryActionLabel="Add new note"
-          subtitle="Add your notes to send customized emails to them."
-          title="Looks like you don't have any notes!"
+          primaryActionLabel={t("note.emptyPage.action_label")}
+          subtitle={t("note.emptyPage.subtitle")}
+          title={t("note.emptyPage.title")}
         />
       )}
       <NewNotePane
