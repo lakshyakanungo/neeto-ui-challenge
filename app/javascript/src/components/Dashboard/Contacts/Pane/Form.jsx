@@ -3,22 +3,22 @@ import React from "react";
 import { Formik, Form as FormikForm } from "formik";
 import { Button, Pane, Toastr } from "neetoui";
 import { Input, Select as FormikSelect } from "neetoui/formik";
+import { useTranslation } from "react-i18next";
 
-import {
-  CONTACTS_FORM_VALIDATION_SCHEMA,
-  CONTACTS_FORM_ROLE_DATA,
-} from "../constants";
+import { FORM_VALIDATION_SCHEMA, FORM_ROLE_DATA } from "../constants";
 
 const Form = ({ onClose, contact, isEdit }) => {
+  const { t } = useTranslation();
+
   const handleSubmit = () => {
-    Toastr.success("Contact added successfully");
+    Toastr.success(t("contact.form.toaster_success"));
     onClose();
   };
 
   return (
     <Formik
       initialValues={contact}
-      validationSchema={CONTACTS_FORM_VALIDATION_SCHEMA}
+      validationSchema={FORM_VALIDATION_SCHEMA}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
@@ -27,31 +27,31 @@ const Form = ({ onClose, contact, isEdit }) => {
             <div className="flex w-full gap-4">
               <Input
                 required
-                label="First Name"
+                label={t("contact.form.firstName.label")}
                 name="firstName"
-                placeholder="Enter first name"
+                placeholder={t("contact.form.firstName.placeholder")}
               />
               <Input
                 required
-                label="Last Name"
+                label={t("contact.form.lastName.label")}
                 name="lastName"
-                placeholder="Enter last name"
+                placeholder={t("contact.form.lastName.placeholder")}
               />
             </div>
             <Input
               required
               className="w-full flex-grow-0"
-              label="Email Address"
+              label={t("contact.form.email.label")}
               name="email"
-              placeholder="Enter your email address"
+              placeholder={t("contact.form.email.placeholder")}
             />
             <FormikSelect
               required
               className="w-full flex-grow-0"
-              label="Role"
+              label={t("contact.form.role.label")}
               name="role"
-              options={CONTACTS_FORM_ROLE_DATA}
-              placeholder="Select Role"
+              options={FORM_ROLE_DATA}
+              placeholder={t("contact.form.role.placeholder")}
               strategy="fixed"
             />
           </Pane.Body>
@@ -59,12 +59,20 @@ const Form = ({ onClose, contact, isEdit }) => {
             <Button
               className="mr-3"
               disabled={isSubmitting}
-              label={isEdit ? "Update" : "Save changes"}
               loading={isSubmitting}
               style="primary"
               type="submit"
+              label={
+                isEdit
+                  ? t("contact.form.button.label.update")
+                  : t("contact.form.button.label.save")
+              }
             />
-            <Button label="Cancel" style="text" onClick={onClose} />
+            <Button
+              label={t("contact.form.button.label.cancel")}
+              style="text"
+              onClick={onClose}
+            />
           </Pane.Footer>
         </FormikForm>
       )}

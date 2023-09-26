@@ -1,28 +1,33 @@
+import i18next from "i18next";
 import { buildSelectOptions } from "utils";
 import * as yup from "yup";
 
-export const CONTACTS_FORM_INITIAL_VALUES = {
+export const FORM_INITIAL_VALUES = {
   firstName: "",
   lastName: "",
   email: "",
   role: "",
 };
 
-export const CONTACTS_FORM_ROLE_DATA = buildSelectOptions([
+export const FORM_ROLE_DATA = buildSelectOptions([
   "Owner",
   "Contractor",
   "Client",
   "HR",
 ]);
 
-export const CONTACTS_FORM_VALIDATION_SCHEMA = yup.object().shape({
-  firstName: yup.string().required("First name is required"),
-  lastName: yup.string().required("Last name is required"),
+export const FORM_VALIDATION_SCHEMA = yup.object().shape({
+  firstName: yup
+    .string()
+    .required(i18next.t("contact.form.validations.firstName")),
+  lastName: yup
+    .string()
+    .required(i18next.t("contact.form.validations.lastName")),
   email: yup
     .string()
-    .email("Please enter valid email address")
-    .required("Email is required"),
-  role: yup.object().required("Role is required"),
+    .email(i18next.t("contact.form.validations.email.valid"))
+    .required(i18next.t("contact.form.validations.email.required")),
+  role: yup.object().required(i18next.t("contact.form.validations.role")),
 });
 
 export const CONTACT_DETAILS_DATA = [
@@ -30,63 +35,63 @@ export const CONTACT_DETAILS_DATA = [
     id: 0,
     name: "Ronald Richards",
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    createdAt: "Feb, 5, 2021",
     role: "Owner",
   },
   {
     id: 1,
     name: "Jacob Jones",
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    createdAt: "Feb, 5, 2021",
     role: "Owner",
   },
   {
     id: 2,
     name: "Ronald Richards",
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    createdAt: "Feb, 5, 2021",
     role: "Owner",
   },
   {
     id: 3,
     name: "Jacob Jones",
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    createdAt: "Feb, 5, 2021",
     role: "Owner",
   },
   {
     id: 4,
     name: "Ronald Richards",
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    createdAt: "Feb, 5, 2021",
     role: "Owner",
   },
   {
     id: 5,
     name: "Jacob Jones",
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    createdAt: "Feb, 5, 2021",
     role: "Owner",
   },
   {
     id: 6,
     name: "Ronald Richards",
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    createdAt: "Feb, 5, 2021",
     role: "Owner",
   },
   {
     id: 7,
     name: "Jacob Jones",
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    createdAt: "Feb, 5, 2021",
     role: "Owner",
   },
   {
     id: 8,
     name: "Ronald Richards",
     email: "albert@borer.com",
-    created_at: "Feb, 5, 2021",
+    createdAt: "Feb, 5, 2021",
     role: "Owner",
   },
 ];

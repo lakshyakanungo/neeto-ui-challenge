@@ -1,8 +1,11 @@
 import React from "react";
 
+import "lib/dayjs"; // eslint-disable-line
+
 import { AuthProvider } from "contexts/auth";
 import { UserProvider } from "contexts/user";
 
+import "./common/i18n";
 import Main from "./components/Main";
 
 const App = props => (

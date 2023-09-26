@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Clock, MenuVertical } from "neetoicons";
 import { Tag, Avatar, Dropdown, Tooltip } from "neetoui";
+import { useTranslation } from "react-i18next";
+
+import { CARD_IMAGE_URL, CARD_USER_NAME } from "./constants";
 
 import { getRelativeTime, getDayAndTime } from "../utils";
 
 const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // new Date(note.created_at)
+  const { t } = useTranslation();
+
+  const { id, title, description, created_at } = note;
 
   const handleDelete = () => {
-    setSelectedNoteIds(note.id);
+    setSelectedNoteIds(id);
     setShowDeleteAlert(true);
   };
 
@@ -25,48 +29,49 @@ const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
           className="text-base font-semibold text-[#2F3941]"
           style={{ color: "#2F3941" }}
         >
-          {note.title}
+          {title}
         </h4>
         <div
           className="text-sm font-normal text-[#68737D]"
           style={{ color: "#68737D" }}
         >
-          {note.description}
+          {description}
         </div>
         <hr className="mt-3 h-px w-full" style={{ background: "#D8DCDE" }} />
       </div>
       <div className="flex justify-between gap-3 self-stretch">
         <div className="flex items-center">
-          <Tag label="Getting Started" />
+          <Tag label={t("note.card.tag.label")} />
         </div>
         <div className="flex items-center gap-2">
           <Clock color="#68737D" size={16} />
-          <Tooltip content={getDayAndTime(note.created_at)} position="bottom">
-            Created {getRelativeTime(note.created_at)}
+          <Tooltip content={getDayAndTime(created_at)} position="bottom">
+            {t("note.card.relative_time", {
+              time: getRelativeTime(created_at),
+            })}
           </Tooltip>
           <Avatar
             showTooltip
             size="small"
             user={{
-              imageUrl: "https://i.pravatar.cc/300",
-              name: "Aishwarya",
+              imageUrl: CARD_IMAGE_URL,
+              name: CARD_USER_NAME,
             }}
           />
         </div>
       </div>
-      <button
-        className="absolute top-2 right-2	h-8 w-8"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-      >
+      <div className="absolute top-2 right-2	h-8 w-8">
         <Dropdown buttonStyle="text" icon={() => <MenuVertical size={20} />}>
           <Dropdown.Menu>
-            <Dropdown.MenuItem.Button>Edit</Dropdown.MenuItem.Button>
+            <Dropdown.MenuItem.Button>
+              {t("note.card.dropdown.btn.edit")}
+            </Dropdown.MenuItem.Button>
             <Dropdown.MenuItem.Button onClick={handleDelete}>
-              Delete
+              {t("note.card.dropdown.btn.delete")}
             </Dropdown.MenuItem.Button>
           </Dropdown.Menu>
         </Dropdown>
-      </button>
+      </div>
     </div>
   );
 };
