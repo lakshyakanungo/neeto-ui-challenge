@@ -4,10 +4,7 @@ import { Formik, Form as FormikForm } from "formik";
 import { Button, Pane, Toastr } from "neetoui";
 import { Input, Select as FormikSelect } from "neetoui/formik";
 
-import {
-  CONTACTS_FORM_VALIDATION_SCHEMA,
-  CONTACTS_FORM_ROLE_DATA,
-} from "../constants";
+import { FORM_VALIDATION_SCHEMA, FORM_ROLE_DATA } from "../constants";
 
 const Form = ({ onClose, contact, isEdit }) => {
   const handleSubmit = () => {
@@ -18,7 +15,7 @@ const Form = ({ onClose, contact, isEdit }) => {
   return (
     <Formik
       initialValues={contact}
-      validationSchema={CONTACTS_FORM_VALIDATION_SCHEMA}
+      validationSchema={FORM_VALIDATION_SCHEMA}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
@@ -50,7 +47,7 @@ const Form = ({ onClose, contact, isEdit }) => {
               className="w-full flex-grow-0"
               label="Role"
               name="role"
-              options={CONTACTS_FORM_ROLE_DATA}
+              options={FORM_ROLE_DATA}
               placeholder="Select Role"
               strategy="fixed"
             />

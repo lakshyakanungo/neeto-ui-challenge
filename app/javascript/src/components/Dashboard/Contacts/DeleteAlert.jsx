@@ -14,6 +14,7 @@ const DeleteAlert = ({ refetch, onClose, setSelectedContactIds }) => {
       refetch();
     } catch (error) {
       logger.error(error);
+    } finally {
       setDeleting(false);
     }
   };
@@ -22,7 +23,7 @@ const DeleteAlert = ({ refetch, onClose, setSelectedContactIds }) => {
     <Alert
       isOpen
       isSubmitting={deleting}
-      message="Are you sure you want to continue? This cannot be undone."
+      message="Are you sure you want to delete contact? This cannot be undone."
       title="Delete Contact"
       onClose={onClose}
       onSubmit={handleDelete}

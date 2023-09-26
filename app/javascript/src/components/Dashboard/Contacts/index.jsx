@@ -28,7 +28,7 @@ const Contacts = () => {
     try {
       setLoading(true);
       // const {
-      //   data: { notes },
+      //   data: { contacts },
       // } = await contactApi.fetch();
       // setContacts(contact);
       setContacts;
@@ -62,7 +62,7 @@ const Contacts = () => {
           placeholder: "Search Name, Email, Phone Number, Ect.",
         }}
       />
-      {contacts.length ? (
+      {contacts.length > 0 ? (
         <Table
           contacts={contacts}
           fetchContacts={fetchContacts}
@@ -72,7 +72,6 @@ const Contacts = () => {
         />
       ) : (
         <EmptyState
-          // image={EmptyContactsListImage}
           primaryAction={() => setShowNewContactPane(true)}
           primaryActionLabel="Add new Contact"
           subtitle="Add your Contacts to send customized emails to them."

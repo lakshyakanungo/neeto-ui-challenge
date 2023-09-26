@@ -7,7 +7,7 @@ import { Input, Textarea, Select as FormikSelect } from "neetoui/formik";
 import notesApi from "apis/notes";
 
 import {
-  NOTES_FORM_VALIDATION_SCHEMA,
+  FORM_VALIDATION_SCHEMA,
   ASSIGNED_CONTACT_DATA,
   TAGS_DATA,
 } from "../constants";
@@ -30,7 +30,7 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
   return (
     <Formik
       initialValues={note}
-      validationSchema={NOTES_FORM_VALIDATION_SCHEMA}
+      validationSchema={FORM_VALIDATION_SCHEMA}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
@@ -55,7 +55,7 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
               required
               className="w-full flex-grow-0"
               label="Assigned Contact"
-              name="assigned_contact"
+              name="assignedContact"
               options={ASSIGNED_CONTACT_DATA}
               placeholder="Select Role"
               strategy="fixed"

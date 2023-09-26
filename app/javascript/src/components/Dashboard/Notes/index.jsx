@@ -62,32 +62,12 @@ const Notes = () => {
           placeholder: "Search Name, Email, Phone Number, Ect.",
         }}
       />
-      {notes.length ? (
-        <>
-          {/* <SubHeader
-            rightActionBlock={
-              <Button
-                disabled={!selectedNoteIds.length}
-                icon={Delete}
-                label="Delete"
-                size="small"
-                onClick={() => setShowDeleteAlert(true)}
-              />
-            }
-          /> */}
-          {/* <Table
-            fetchNotes={fetchNotes}
-            notes={notes}
-            selectedNoteIds={selectedNoteIds}
-            setSelectedNoteIds={setSelectedNoteIds}
-          /> */}
-          {/* <div className="mx-auto flex"></div> */}
-          <List
-            notes={notes}
-            setSelectedNoteIds={setSelectedNoteIds}
-            setShowDeleteAlert={setShowDeleteAlert}
-          />
-        </>
+      {notes.length > 0 ? (
+        <List
+          notes={notes}
+          setSelectedNoteIds={setSelectedNoteIds}
+          setShowDeleteAlert={setShowDeleteAlert}
+        />
       ) : (
         <EmptyState
           image={EmptyNotesListImage}

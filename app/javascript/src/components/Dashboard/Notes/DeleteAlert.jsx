@@ -21,6 +21,7 @@ const DeleteAlert = ({
       refetch();
     } catch (error) {
       logger.error(error);
+    } finally {
       setDeleting(false);
     }
   };
