@@ -35,21 +35,21 @@ const renderOtherColumnData = data => (
 
 export const getColumnData = setShowDeleteAlert => [
   {
-    title: renderColumnHeader("Name and Role"),
+    title: renderColumnHeader(i18next.t("contact.table.header.name_and_role")),
     dataIndex: "name",
     key: "name",
     width: "30%",
     render: (name, { role }) => renderNameColumnData(name, role),
   },
   {
-    title: renderColumnHeader("Email"),
+    title: renderColumnHeader(i18next.t("contact.table.header.email")),
     dataIndex: "email",
     key: "email",
     width: "30%",
     render: email => renderOtherColumnData(email),
   },
   {
-    title: renderColumnHeader("Created At"),
+    title: renderColumnHeader(i18next.t("contact.table.header.created_at")),
     dataIndex: "createdAt",
     key: "createdAt",
     width: "35%",

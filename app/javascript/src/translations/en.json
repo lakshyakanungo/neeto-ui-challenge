@@ -116,6 +116,11 @@
       }
     },
     "table": {
+      "header": {
+        "name_and_role": "Name and Role",
+        "email": "Email",
+        "created_at": "Created At"
+      },
       "dropdown": {
         "edit": "Edit",
         "delete": "delete"
