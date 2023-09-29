@@ -1,5 +1,6 @@
 import React from "react";
 
+import classnames from "classnames";
 import { t } from "i18next";
 import { Avatar } from "neetoui";
 
@@ -59,3 +60,8 @@ export const getColumnData = handleDelete => [
     render: () => <ContactDropdown handleDelete={handleDelete} />,
   },
 ];
+
+export const buildRowClassName = (_, index) =>
+  classnames({
+    "bg-gray-100": index % 2,
+  });
