@@ -64,9 +64,9 @@ const Contacts = () => {
         <Table
           contacts={contacts}
           fetchContacts={fetchContacts}
+          handleDelete={() => setShowDeleteAlert(true)}
           selectedContactIds={selectedContactIds}
           setSelectedContactIds={setSelectedContactIds}
-          setShowDeleteAlert={setShowDeleteAlert}
         />
       ) : (
         <EmptyState

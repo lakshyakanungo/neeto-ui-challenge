@@ -1,10 +1,11 @@
 import React from "react";
 
 import { t } from "i18next";
-import { MenuHorizontal } from "neetoicons";
-import { Avatar, Dropdown } from "neetoui";
+import { Avatar } from "neetoui";
 
 import { dateFormatter } from "components/Dashboard/utils";
+
+import ContactDropdown from "./Dropdown";
 
 const renderColumnHeader = text => (
   <div className="neeto-ui-text-gray-300 text-xs font-bold uppercase tracking-wide">
@@ -28,7 +29,7 @@ const renderOtherColumnData = data => (
   </div>
 );
 
-export const getColumnData = setShowDeleteAlert => [
+export const getColumnData = handleDelete => [
   {
     title: renderColumnHeader(t("contact.table.header.nameAndRole")),
     dataIndex: "name",
@@ -55,28 +56,6 @@ export const getColumnData = setShowDeleteAlert => [
     dataIndex: "iconButton",
     key: "iconButton",
     width: "5%",
-    render: () => (
-      <div className="flex justify-center">
-        <Dropdown
-          appendTo={() => document.body}
-          buttonStyle="text"
-          icon={() => <MenuHorizontal size={20} />}
-          strategy="fixed"
-        >
-          <Dropdown.Menu>
-            <Dropdown.MenuItem.Button>
-              {t("contact.table.dropdown.edit")}
-            </Dropdown.MenuItem.Button>
-            <Dropdown.MenuItem.Button
-              onClick={() => {
-                setShowDeleteAlert(true);
-              }}
-            >
-              {t("contact.table.dropdown.delete")}
-            </Dropdown.MenuItem.Button>
-          </Dropdown.Menu>
-        </Dropdown>
-      </div>
-    ),
+    render: () => <ContactDropdown handleDelete={handleDelete} />,
   },
 ];
