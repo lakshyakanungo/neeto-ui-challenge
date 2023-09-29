@@ -48,7 +48,7 @@ const Contacts = () => {
         actionBlock={
           <Button
             icon="ri-add-line"
-            label={t("contact.header.btn_label")}
+            label={t("contact.header.button.label")}
             size="small"
             type="button"
             onClick={() => setShowNewContactPane(true)}
@@ -57,7 +57,7 @@ const Contacts = () => {
         searchProps={{
           value: searchTerm,
           onChange: event => setSearchTerm(event.target.value),
-          placeholder: t("contact.header.search_placeholder"),
+          placeholder: t("contact.header.search.placeholder"),
         }}
       />
       {contacts.length > 0 ? (
@@ -71,7 +71,7 @@ const Contacts = () => {
       ) : (
         <EmptyState
           primaryAction={() => setShowNewContactPane(true)}
-          primaryActionLabel={t("contact.emptyPage.action_label")}
+          primaryActionLabel={t("contact.emptyPage.label")}
           subtitle={t("contact.emptyPage.subtitle")}
           title={t("contact.emptyPage.title")}
         />

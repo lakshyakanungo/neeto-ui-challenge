@@ -30,7 +30,7 @@ const renderOtherColumnData = data => (
 
 export const getColumnData = setShowDeleteAlert => [
   {
-    title: renderColumnHeader(t("contact.table.header.name_and_role")),
+    title: renderColumnHeader(t("contact.table.header.nameAndRole")),
     dataIndex: "name",
     key: "name",
     width: "30%",
@@ -44,7 +44,7 @@ export const getColumnData = setShowDeleteAlert => [
     render: email => renderOtherColumnData(email),
   },
   {
-    title: renderColumnHeader(t("contact.table.header.created_at")),
+    title: renderColumnHeader(t("contact.table.header.createdAt")),
     dataIndex: "createdAt",
     key: "createdAt",
     width: "35%",

@@ -33,8 +33,8 @@ const DeleteAlert = ({
     <Alert
       isOpen
       isSubmitting={deleting}
-      message={t("note.delete_alert.message")}
-      title={t("note.delete_alert.title")}
+      message={t("note.deleteAlert.message")}
+      title={t("note.deleteAlert.title")}
       onClose={onClose}
       onSubmit={handleDelete}
     />

@@ -11,7 +11,7 @@ import { findRelativeTime, dayTimeFormatter } from "../utils";
 const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
   const { t } = useTranslation();
 
-  const { id, title, description, created_at } = note;
+  const { id, title, description, created_at: createdAt } = note;
 
   const handleDelete = () => {
     setSelectedNoteIds(id);
@@ -39,9 +39,9 @@ const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
         </div>
         <div className="flex items-center gap-2">
           <Clock color="#68737D" size={16} />
-          <Tooltip content={dayTimeFormatter(created_at)} position="bottom">
-            {t("note.card.relative_time", {
-              time: findRelativeTime(created_at),
+          <Tooltip content={dayTimeFormatter(createdAt)} position="bottom">
+            {t("note.card.relativeTime", {
+              time: findRelativeTime(createdAt),
             })}
           </Tooltip>
           <Avatar

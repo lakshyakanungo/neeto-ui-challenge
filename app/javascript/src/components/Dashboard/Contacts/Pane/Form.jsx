@@ -11,7 +11,7 @@ const Form = ({ onClose, contact }) => {
   const { t } = useTranslation();
 
   const handleSubmit = () => {
-    Toastr.success(t("contact.form.toaster_success"));
+    Toastr.success(t("contact.form.toaster.success"));
     onClose();
   };
 

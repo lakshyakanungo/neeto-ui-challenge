@@ -52,7 +52,7 @@ const Notes = () => {
         actionBlock={
           <Button
             icon="ri-add-line"
-            label={t("note.header.btn_label")}
+            label={t("note.header.button.label")}
             size="small"
             type="button"
             onClick={() => setShowNewNotePane(true)}
@@ -61,7 +61,7 @@ const Notes = () => {
         searchProps={{
           value: searchTerm,
           onChange: event => setSearchTerm(event.target.value),
-          placeholder: t("note.header.search_placeholder"),
+          placeholder: t("note.header.search.placeholder"),
         }}
       />
       {notes.length > 0 ? (
@@ -74,7 +74,7 @@ const Notes = () => {
         <EmptyState
           image={EmptyNotesListImage}
           primaryAction={() => setShowNewNotePane(true)}
-          primaryActionLabel={t("note.emptyPage.action_label")}
+          primaryActionLabel={t("note.emptyPage.label")}
           subtitle={t("note.emptyPage.subtitle")}
           title={t("note.emptyPage.title")}
         />
