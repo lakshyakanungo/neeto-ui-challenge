@@ -12,8 +12,6 @@ import DeleteAlert from "./DeleteAlert";
 import List from "./List";
 import NewNotePane from "./Pane/Create";
 
-const noop = () => {};
-
 const Notes = () => {
   const [loading, setLoading] = useState(true);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
@@ -49,20 +47,21 @@ const Notes = () => {
   return (
     <Container>
       <Header
-        menuBarToggle={noop}
+        menuBarToggle={() => {}}
         title={t("note.header.title")}
         actionBlock={
           <Button
             icon="ri-add-line"
-            label={t("note.header.btn_label")}
+            label={t("note.header.button.label")}
             size="small"
+            type="button"
             onClick={() => setShowNewNotePane(true)}
           />
         }
         searchProps={{
           value: searchTerm,
-          onChange: e => setSearchTerm(e.target.value),
-          placeholder: t("note.header.search_placeholder"),
+          onChange: event => setSearchTerm(event.target.value),
+          placeholder: t("note.header.search.placeholder"),
         }}
       />
       {notes.length > 0 ? (
@@ -75,7 +74,7 @@ const Notes = () => {
         <EmptyState
           image={EmptyNotesListImage}
           primaryAction={() => setShowNewNotePane(true)}
-          primaryActionLabel={t("note.emptyPage.action_label")}
+          primaryActionLabel={t("note.emptyPage.label")}
           subtitle={t("note.emptyPage.subtitle")}
           title={t("note.emptyPage.title")}
         />

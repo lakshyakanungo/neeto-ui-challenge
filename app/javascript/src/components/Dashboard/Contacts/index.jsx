@@ -11,8 +11,6 @@ import DeleteAlert from "./DeleteAlert";
 import NewContactPane from "./Pane/Create";
 import Table from "./Table";
 
-const noop = () => {};
-
 const Contacts = () => {
   const [loading, setLoading] = useState(false);
   const [showNewContactPane, setShowNewContactPane] = useState(false);
@@ -30,10 +28,6 @@ const Contacts = () => {
   const fetchContacts = async () => {
     try {
       setLoading(true);
-      // const {
-      //   data: { contacts },
-      // } = await contactApi.fetch();
-      // setContacts(contact);
       setContacts;
     } catch (error) {
       logger.error(error);
@@ -49,34 +43,35 @@ const Contacts = () => {
   return (
     <Container>
       <Header
-        menuBarToggle={noop}
+        menuBarToggle={() => {}}
         title={t("contact.header.title")}
         actionBlock={
           <Button
             icon="ri-add-line"
-            label={t("contact.header.btn_label")}
+            label={t("contact.header.button.label")}
             size="small"
+            type="button"
             onClick={() => setShowNewContactPane(true)}
           />
         }
         searchProps={{
           value: searchTerm,
-          onChange: e => setSearchTerm(e.target.value),
-          placeholder: t("contact.header.search_placeholder"),
+          onChange: event => setSearchTerm(event.target.value),
+          placeholder: t("contact.header.search.placeholder"),
         }}
       />
       {contacts.length > 0 ? (
         <Table
           contacts={contacts}
           fetchContacts={fetchContacts}
+          handleDelete={() => setShowDeleteAlert(true)}
           selectedContactIds={selectedContactIds}
           setSelectedContactIds={setSelectedContactIds}
-          setShowDeleteAlert={setShowDeleteAlert}
         />
       ) : (
         <EmptyState
           primaryAction={() => setShowNewContactPane(true)}
-          primaryActionLabel={t("contact.emptyPage.action_label")}
+          primaryActionLabel={t("contact.emptyPage.label")}
           subtitle={t("contact.emptyPage.subtitle")}
           title={t("contact.emptyPage.title")}
         />

@@ -13,16 +13,12 @@ import {
   TAGS_DATA,
 } from "../constants";
 
-const Form = ({ onClose, refetch, note, isEdit }) => {
+const Form = ({ onClose, refetch, note }) => {
   const { t } = useTranslation();
 
   const handleSubmit = async values => {
     try {
-      if (isEdit) {
-        await notesApi.update(note.id, values);
-      } else {
-        await notesApi.create(values);
-      }
+      await notesApi.create(values);
       refetch();
       onClose();
     } catch (err) {
@@ -40,14 +36,12 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
         <FormikForm className="w-full">
           <Pane.Body className="space-y-6">
             <Input
-              required
               className="w-full flex-grow-0"
               label={t("note.form.title.label")}
               name="title"
               placeholder={t("note.form.title.placeholder")}
             />
             <Textarea
-              required
               className="w-full flex-grow-0"
               label={t("note.form.description.label")}
               name="description"
@@ -55,7 +49,6 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
               rows={8}
             />
             <FormikSelect
-              required
               className="w-full flex-grow-0"
               label={t("note.form.assignedContact.label")}
               name="assignedContact"
@@ -64,7 +57,6 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
               strategy="fixed"
             />
             <FormikSelect
-              required
               className="w-full flex-grow-0"
               label={t("note.form.tags.label")}
               name="tags"
@@ -77,18 +69,15 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
             <Button
               className="mr-3"
               disabled={isSubmitting}
+              label={t("note.form.button.label.save")}
               loading={isSubmitting}
               style="primary"
               type="submit"
-              label={
-                isEdit
-                  ? t("note.form.button.label.update")
-                  : t("note.form.button.label.save")
-              }
             />
             <Button
               label={t("note.form.button.label.cancel")}
               style="text"
+              type="reset"
               onClick={onClose}
             />
           </Pane.Footer>

@@ -2,15 +2,15 @@
   "note": {
     "header": {
       "title": "Notes",
-      "btn_label": "Add note",
-      "search_placeholder": "Search Name, Email, Phone Number, Ect."
+      "button": { "label": "Add note" },
+      "search": { "placeholder": "Search Name, Email, Phone Number, Ect." }
     },
     "emptyPage": {
-      "action_label": "Add new note",
+      "label": "Add new note",
       "subtitle": "Add your notes to send customized emails to them.",
       "title": "Looks like you don't have any notes!"
     },
-    "delete_alert": {
+    "deleteAlert": {
       "message": "Are you sure you want to continue? This cannot be undone.",
       "title": "Delete note?"
     },
@@ -52,7 +52,7 @@
       "tag": {
         "label": "Getting Started"
       },
-      "relative_time": "Created {{time}}",
+      "relativeTime": "Created {{time}}",
       "dropdown": {
         "btn": {
           "edit": "Edit",
@@ -64,18 +64,18 @@
   "contact": {
     "header": {
       "title": "Contacts",
-      "btn_label": "Add contact",
-      "search_placeholder": "Search Name, Email, Phone Number, Ect."
+      "button": { "label": "Add contact" },
+      "search": { "placeholder": "Search Name, Email, Phone Number, Ect." }
     },
     "emptyPage": {
-      "action_label": "Add new Contact",
+      "label": "Add new Contact",
       "subtitle": "Add your Contacts to send customized emails to them.",
       "title": "Looks like you don't have any Contacts!"
     },
-    "delete_alert": {
+    "deleteAlert": {
       "message": "Are you sure you want to continue? This cannot be undone.",
       "title": "Delete Contact?",
-      "toaster_success": "Contact deleted successfully"
+      "toaster": { "success": "Contact deleted successfully" }
     },
     "pane": {
       "header": "Add New Contact"
@@ -104,7 +104,7 @@
           "cancel": "Cancel"
         }
       },
-      "toaster_success": "Contact added successfully",
+      "toaster": { "success": "Contact added successfully" },
       "validations": {
         "firstName": "First name is required",
         "lastName": "Last name is required",
@@ -117,9 +117,9 @@
     },
     "table": {
       "header": {
-        "name_and_role": "Name and Role",
+        "nameAndRole": "Name and Role",
         "email": "Email",
-        "created_at": "Created At"
+        "createdAt": "Created At"
       },
       "dropdown": {
         "edit": "Edit",

@@ -1,4 +1,4 @@
-import i18next from "i18next";
+import { t } from "i18next";
 import { buildSelectOptions } from "utils";
 import * as yup from "yup";
 
@@ -29,14 +29,12 @@ export const CARD_IMAGE_URL = "https://i.pravatar.cc/300";
 export const CARD_USER_NAME = "Aishwarya";
 
 export const FORM_VALIDATION_SCHEMA = yup.object().shape({
-  title: yup.string().required(i18next.t("note.form.validations.title")),
-  description: yup
-    .string()
-    .required(i18next.t("note.form.validations.description")),
+  title: yup.string().required(t("note.form.validations.title")),
+  description: yup.string().required(t("note.form.validations.description")),
   assignedContact: yup
     .object()
-    .required(i18next.t("note.form.validations.assignedContact")),
-  tags: yup.object().required(i18next.t("note.form.validations.tags")),
+    .required(t("note.form.validations.assignedContact")),
+  tags: yup.object().required(t("note.form.validations.tags")),
 });
 
 export const TABLE_COLUMN_DATA = [

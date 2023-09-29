@@ -11,7 +11,7 @@ const DeleteAlert = ({ refetch, onClose, setSelectedContactIds }) => {
   const handleDelete = async () => {
     try {
       setDeleting(true);
-      Toastr.success(t("contact.delete_alert.toaster_success"));
+      Toastr.success(t("contact.deleteAlert.toaster.success"));
       onClose();
       setSelectedContactIds([]);
       refetch();
@@ -26,8 +26,8 @@ const DeleteAlert = ({ refetch, onClose, setSelectedContactIds }) => {
     <Alert
       isOpen
       isSubmitting={deleting}
-      message={t("contact.delete_alert.message")}
-      title={t("contact.delete_alert.title")}
+      message={t("contact.deleteAlert.message")}
+      title={t("contact.deleteAlert.title")}
       onClose={onClose}
       onSubmit={handleDelete}
     />

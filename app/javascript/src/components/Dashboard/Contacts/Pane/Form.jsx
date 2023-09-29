@@ -7,11 +7,11 @@ import { useTranslation } from "react-i18next";
 
 import { FORM_VALIDATION_SCHEMA, FORM_ROLE_DATA } from "../constants";
 
-const Form = ({ onClose, contact, isEdit }) => {
+const Form = ({ onClose, contact }) => {
   const { t } = useTranslation();
 
   const handleSubmit = () => {
-    Toastr.success(t("contact.form.toaster_success"));
+    Toastr.success(t("contact.form.toaster.success"));
     onClose();
   };
 
@@ -26,27 +26,23 @@ const Form = ({ onClose, contact, isEdit }) => {
           <Pane.Body className="space-y-6">
             <div className="flex w-full gap-4">
               <Input
-                required
                 label={t("contact.form.firstName.label")}
                 name="firstName"
                 placeholder={t("contact.form.firstName.placeholder")}
               />
               <Input
-                required
                 label={t("contact.form.lastName.label")}
                 name="lastName"
                 placeholder={t("contact.form.lastName.placeholder")}
               />
             </div>
             <Input
-              required
               className="w-full flex-grow-0"
               label={t("contact.form.email.label")}
               name="email"
               placeholder={t("contact.form.email.placeholder")}
             />
             <FormikSelect
-              required
               className="w-full flex-grow-0"
               label={t("contact.form.role.label")}
               name="role"
@@ -59,18 +55,15 @@ const Form = ({ onClose, contact, isEdit }) => {
             <Button
               className="mr-3"
               disabled={isSubmitting}
+              label={t("contact.form.button.label.save")}
               loading={isSubmitting}
               style="primary"
               type="submit"
-              label={
-                isEdit
-                  ? t("contact.form.button.label.update")
-                  : t("contact.form.button.label.save")
-              }
             />
             <Button
               label={t("contact.form.button.label.cancel")}
               style="text"
+              type="reset"
               onClick={onClose}
             />
           </Pane.Footer>

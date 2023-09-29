@@ -2,21 +2,21 @@ import React from "react";
 
 import { Table as NeetoUITable } from "neetoui";
 
-import { getColumnData } from "./utils";
+import { getColumnData, buildRowClassName } from "./utils";
 
 const Table = ({
   selectedContactIds,
   setSelectedContactIds,
   contacts = [],
-  setShowDeleteAlert,
+  handleDelete,
 }) => (
   <div className="contacts-table-height mt-6 w-full">
     <NeetoUITable
       rowSelection
       bordered={false}
-      columnData={getColumnData(setShowDeleteAlert)}
+      columnData={getColumnData(handleDelete)}
       defaultPageSize={9}
-      rowClassName={(_, index) => (index % 2 ? "bg-gray-100" : "")}
+      rowClassName={buildRowClassName}
       rowData={contacts}
       selectedRowKeys={selectedContactIds}
       onRowSelect={selectedRowKeys => setSelectedContactIds(selectedRowKeys)}

@@ -6,12 +6,13 @@ import { useTranslation } from "react-i18next";
 
 import { CARD_IMAGE_URL, CARD_USER_NAME } from "./constants";
 
-import { getRelativeTime, getDayAndTime } from "../utils";
+import { findRelativeTime, dayTimeFormatter } from "../utils";
 
 const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
-  const { t } = useTranslation();
+  const { id, title, description, created_at: createdAt } = note;
+  const { Menu, MenuItem } = Dropdown;
 
-  const { id, title, description, created_at } = note;
+  const { t } = useTranslation();
 
   const handleDelete = () => {
     setSelectedNoteIds(id);
@@ -39,9 +40,9 @@ const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
         </div>
         <div className="flex items-center gap-2">
           <Clock color="#68737D" size={16} />
-          <Tooltip content={getDayAndTime(created_at)} position="bottom">
-            {t("note.card.relative_time", {
-              time: getRelativeTime(created_at),
+          <Tooltip content={dayTimeFormatter(createdAt)} position="bottom">
+            {t("note.card.relativeTime", {
+              time: findRelativeTime(createdAt),
             })}
           </Tooltip>
           <Avatar
@@ -56,14 +57,14 @@ const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
       </div>
       <div className="absolute top-2 right-2	h-8 w-8">
         <Dropdown buttonStyle="text" icon={() => <MenuVertical size={20} />}>
-          <Dropdown.Menu>
-            <Dropdown.MenuItem.Button>
+          <Menu>
+            <MenuItem.Button>
               {t("note.card.dropdown.btn.edit")}
-            </Dropdown.MenuItem.Button>
-            <Dropdown.MenuItem.Button onClick={handleDelete}>
+            </MenuItem.Button>
+            <MenuItem.Button onClick={handleDelete}>
               {t("note.card.dropdown.btn.delete")}
-            </Dropdown.MenuItem.Button>
-          </Dropdown.Menu>
+            </MenuItem.Button>
+          </Menu>
         </Dropdown>
       </div>
     </div>
