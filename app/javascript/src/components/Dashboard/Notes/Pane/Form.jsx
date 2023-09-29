@@ -36,14 +36,12 @@ const Form = ({ onClose, refetch, note }) => {
         <FormikForm className="w-full">
           <Pane.Body className="space-y-6">
             <Input
-              required
               className="w-full flex-grow-0"
               label={t("note.form.title.label")}
               name="title"
               placeholder={t("note.form.title.placeholder")}
             />
             <Textarea
-              required
               className="w-full flex-grow-0"
               label={t("note.form.description.label")}
               name="description"
@@ -51,7 +49,6 @@ const Form = ({ onClose, refetch, note }) => {
               rows={8}
             />
             <FormikSelect
-              required
               className="w-full flex-grow-0"
               label={t("note.form.assignedContact.label")}
               name="assignedContact"
@@ -60,7 +57,6 @@ const Form = ({ onClose, refetch, note }) => {
               strategy="fixed"
             />
             <FormikSelect
-              required
               className="w-full flex-grow-0"
               label={t("note.form.tags.label")}
               name="tags"
