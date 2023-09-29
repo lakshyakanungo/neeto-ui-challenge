@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import { CARD_IMAGE_URL, CARD_USER_NAME } from "./constants";
 
-import { getRelativeTime, getDayAndTime } from "../utils";
+import { findRelativeTime, dayTimeFormatter } from "../utils";
 
 const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
   const { t } = useTranslation();
@@ -39,9 +39,9 @@ const Card = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => {
         </div>
         <div className="flex items-center gap-2">
           <Clock color="#68737D" size={16} />
-          <Tooltip content={getDayAndTime(created_at)} position="bottom">
+          <Tooltip content={dayTimeFormatter(created_at)} position="bottom">
             {t("note.card.relative_time", {
-              time: getRelativeTime(created_at),
+              time: findRelativeTime(created_at),
             })}
           </Tooltip>
           <Avatar

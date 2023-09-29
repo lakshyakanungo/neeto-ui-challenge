@@ -10,10 +10,10 @@ import { FORM_INITIAL_VALUES } from "../constants";
 const Create = ({ fetchNotes, showPane, setShowPane }) => {
   const { t } = useTranslation();
 
-  const onClose = () => setShowPane(false);
+  const handleClose = () => setShowPane(false);
 
   return (
-    <Pane isOpen={showPane} onClose={onClose}>
+    <Pane isOpen={showPane} onClose={handleClose}>
       <Pane.Header>
         <Typography style="h2" weight="semibold">
           {t("contact.pane.header")}
@@ -21,9 +21,8 @@ const Create = ({ fetchNotes, showPane, setShowPane }) => {
       </Pane.Header>
       <Form
         contact={FORM_INITIAL_VALUES}
-        isEdit={false}
         refetch={fetchNotes}
-        onClose={onClose}
+        onClose={handleClose}
       />
     </Pane>
   );

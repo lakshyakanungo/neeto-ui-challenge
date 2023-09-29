@@ -1,4 +1,4 @@
-import i18next from "i18next";
+import { t } from "i18next";
 import { buildSelectOptions } from "utils";
 import * as yup from "yup";
 
@@ -17,17 +17,13 @@ export const FORM_ROLE_DATA = buildSelectOptions([
 ]);
 
 export const FORM_VALIDATION_SCHEMA = yup.object().shape({
-  firstName: yup
-    .string()
-    .required(i18next.t("contact.form.validations.firstName")),
-  lastName: yup
-    .string()
-    .required(i18next.t("contact.form.validations.lastName")),
+  firstName: yup.string().required(t("contact.form.validations.firstName")),
+  lastName: yup.string().required(t("contact.form.validations.lastName")),
   email: yup
     .string()
-    .email(i18next.t("contact.form.validations.email.valid"))
-    .required(i18next.t("contact.form.validations.email.required")),
-  role: yup.object().required(i18next.t("contact.form.validations.role")),
+    .email(t("contact.form.validations.email.valid"))
+    .required(t("contact.form.validations.email.required")),
+  role: yup.object().required(t("contact.form.validations.role")),
 });
 
 export const CONTACT_DETAILS_DATA = [

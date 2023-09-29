@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 
 import { FORM_VALIDATION_SCHEMA, FORM_ROLE_DATA } from "../constants";
 
-const Form = ({ onClose, contact, isEdit }) => {
+const Form = ({ onClose, contact }) => {
   const { t } = useTranslation();
 
   const handleSubmit = () => {
@@ -59,18 +59,15 @@ const Form = ({ onClose, contact, isEdit }) => {
             <Button
               className="mr-3"
               disabled={isSubmitting}
+              label={t("contact.form.button.label.save")}
               loading={isSubmitting}
               style="primary"
               type="submit"
-              label={
-                isEdit
-                  ? t("contact.form.button.label.update")
-                  : t("contact.form.button.label.save")
-              }
             />
             <Button
               label={t("contact.form.button.label.cancel")}
               style="text"
+              type="reset"
               onClick={onClose}
             />
           </Pane.Footer>

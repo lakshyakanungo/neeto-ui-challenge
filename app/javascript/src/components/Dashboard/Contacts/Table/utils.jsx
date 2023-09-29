@@ -1,10 +1,10 @@
 import React from "react";
 
-import i18next from "i18next";
+import { t } from "i18next";
 import { MenuHorizontal } from "neetoicons";
 import { Avatar, Dropdown } from "neetoui";
 
-import { getMonthAndDate } from "components/Dashboard/utils";
+import { dateFormatter } from "components/Dashboard/utils";
 
 const renderColumnHeader = text => (
   <div className="neeto-ui-text-gray-300 text-xs font-bold uppercase tracking-wide">
@@ -30,25 +30,25 @@ const renderOtherColumnData = data => (
 
 export const getColumnData = setShowDeleteAlert => [
   {
-    title: renderColumnHeader(i18next.t("contact.table.header.name_and_role")),
+    title: renderColumnHeader(t("contact.table.header.name_and_role")),
     dataIndex: "name",
     key: "name",
     width: "30%",
     render: (name, { role }) => renderNameColumnData(name, role),
   },
   {
-    title: renderColumnHeader(i18next.t("contact.table.header.email")),
+    title: renderColumnHeader(t("contact.table.header.email")),
     dataIndex: "email",
     key: "email",
     width: "30%",
     render: email => renderOtherColumnData(email),
   },
   {
-    title: renderColumnHeader(i18next.t("contact.table.header.created_at")),
+    title: renderColumnHeader(t("contact.table.header.created_at")),
     dataIndex: "createdAt",
     key: "createdAt",
     width: "35%",
-    render: createdAt => renderOtherColumnData(getMonthAndDate(createdAt)),
+    render: createdAt => renderOtherColumnData(dateFormatter(createdAt)),
   },
   {
     title: "",
@@ -65,14 +65,14 @@ export const getColumnData = setShowDeleteAlert => [
         >
           <Dropdown.Menu>
             <Dropdown.MenuItem.Button>
-              {i18next.t("contact.table.dropdown.edit")}
+              {t("contact.table.dropdown.edit")}
             </Dropdown.MenuItem.Button>
             <Dropdown.MenuItem.Button
               onClick={() => {
                 setShowDeleteAlert(true);
               }}
             >
-              {i18next.t("contact.table.dropdown.delete")}
+              {t("contact.table.dropdown.delete")}
             </Dropdown.MenuItem.Button>
           </Dropdown.Menu>
         </Dropdown>

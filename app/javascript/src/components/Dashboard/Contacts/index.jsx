@@ -11,8 +11,6 @@ import DeleteAlert from "./DeleteAlert";
 import NewContactPane from "./Pane/Create";
 import Table from "./Table";
 
-const noop = () => {};
-
 const Contacts = () => {
   const [loading, setLoading] = useState(false);
   const [showNewContactPane, setShowNewContactPane] = useState(false);
@@ -30,10 +28,6 @@ const Contacts = () => {
   const fetchContacts = async () => {
     try {
       setLoading(true);
-      // const {
-      //   data: { contacts },
-      // } = await contactApi.fetch();
-      // setContacts(contact);
       setContacts;
     } catch (error) {
       logger.error(error);
@@ -49,19 +43,20 @@ const Contacts = () => {
   return (
     <Container>
       <Header
-        menuBarToggle={noop}
+        menuBarToggle={() => {}}
         title={t("contact.header.title")}
         actionBlock={
           <Button
             icon="ri-add-line"
             label={t("contact.header.btn_label")}
             size="small"
+            type="button"
             onClick={() => setShowNewContactPane(true)}
           />
         }
         searchProps={{
           value: searchTerm,
-          onChange: e => setSearchTerm(e.target.value),
+          onChange: event => setSearchTerm(event.target.value),
           placeholder: t("contact.header.search_placeholder"),
         }}
       />

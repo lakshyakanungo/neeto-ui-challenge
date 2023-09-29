@@ -13,16 +13,12 @@ import {
   TAGS_DATA,
 } from "../constants";
 
-const Form = ({ onClose, refetch, note, isEdit }) => {
+const Form = ({ onClose, refetch, note }) => {
   const { t } = useTranslation();
 
   const handleSubmit = async values => {
     try {
-      if (isEdit) {
-        await notesApi.update(note.id, values);
-      } else {
-        await notesApi.create(values);
-      }
+      await notesApi.create(values);
       refetch();
       onClose();
     } catch (err) {
@@ -77,18 +73,15 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
             <Button
               className="mr-3"
               disabled={isSubmitting}
+              label={t("note.form.button.label.save")}
               loading={isSubmitting}
               style="primary"
               type="submit"
-              label={
-                isEdit
-                  ? t("note.form.button.label.update")
-                  : t("note.form.button.label.save")
-              }
             />
             <Button
               label={t("note.form.button.label.cancel")}
               style="text"
+              type="reset"
               onClick={onClose}
             />
           </Pane.Footer>

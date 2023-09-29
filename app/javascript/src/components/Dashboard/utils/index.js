@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 
-export const getRelativeTime = date => dayjs(date).fromNow();
+export const findRelativeTime = date => dayjs(date).fromNow();
 
-export const getDayAndTime = date => dayjs(date).format("dddd, h:m A");
+export const dayTimeFormatter = date => dayjs(date).format("dddd, h:m A");
 
-export const getMonthAndDate = date => dayjs(date).format("MMM D YYYY");
+export const dateFormatter = date => dayjs(date).format("MMM D YYYY");
